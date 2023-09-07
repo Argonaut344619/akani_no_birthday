@@ -10,7 +10,13 @@ body {
 
 h1 {
     font-size: 5em;
+    text-align:center;
     animation: bounce 1s infinite;
+    margin-bottom: 30px;
+}
+h2{
+    font: size 3eml;
+    margin-top: 30px;
 }
 
 @keyframes bounce {
