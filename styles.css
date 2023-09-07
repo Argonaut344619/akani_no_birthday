@@ -8,14 +8,21 @@ body {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 要素を中央に揃える */
+}
+
 h1 {
     font-size: 3em;
-    text-align:center;
+    text-align: center;
     animation: bounce 1s infinite;
     margin-bottom: 30px;
 }
-h2{
-    font: size 2eml;
+
+h2 {
+    font-size: 2em;  /* 以前のエラーを修正 */
     margin-top: 30px;
 }
 
