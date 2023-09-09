@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // <h1>のテキストを1文字ずつ表示
     charsCongrats.forEach((char, index) => {
         setTimeout(() => {
-            congratsText.innerHTML += char === " " ? " " : (char + "💖");
-            // シェイクアニメーションを追加
+            congratsText.innerHTML += char;
             if (index === charsCongrats.length - 1) {
+                congratsText.innerHTML += "💖";
                 congratsText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
             }
         }, 100 * index);
@@ -24,23 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         charsSection.forEach((char, index) => {
             setTimeout(() => {
-                sectionText.innerHTML += char === " " ? " " : (char + "🐻");
-                // シェイクアニメーションを追加
+                sectionText.innerHTML += char;
                 if (index === charsSection.length - 1) {
+                    sectionText.innerHTML += "🐻";
                     sectionText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
                 }
             }, 100 * index);
         });
     }, 100 * charsCongrats.length);
 
-    // <span>のテキストにシェイクアニメーションを追加
+    // 各<span>のテキストにシェイクアニメーションを適用
+    let totalAnimationTime = 100 * charsCongrats.length + 100 * charsSection.length;
     animatedTexts.forEach((text, index) => {
         setTimeout(() => {
             text.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both ${index + 1} times`;
-        }, 500 * (charsCongrats.length + charsSection.length) + 500 * index);
+        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
     });
 
-    // シェイク（振動）アニメーションをkeyframesで追加
     const style = document.createElement('style');
     style.innerHTML = `
         @keyframes shake {
