@@ -1,47 +1,52 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'preconnect', cursive;
     background-color: pink;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'preconnect', cursive;
-    
-    
+    padding: 20px;  /* 画面の端に少し余白を追加 */
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* 要素を中央に揃える */
+    align-items: center;
+    width: 100%;  /* 幅を最大にする */
+    max-width: 600px;  /* 画面が大きくなった場合の最大幅を設定 */
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 2.5em;  /* フォントサイズを調整 */
     text-align: center;
     animation: bounce 1s infinite;
-    margin-bottom: 30px;
+    margin-bottom: 20px;  /* 余白を調整 */
 }
 
 h2 {
-    font-size: 2em;  /* 以前のエラーを修正 */
-    margin-top: 30px;
+    font-size: 2em;
+    margin-top: 20px;  /* 余白を調整 */
 }
+
 .animated-text {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.3em;  /* フォントサイズを調整 */
     opacity: 0;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+/* メディアクエリを使用して、スマホの画面サイズに合わせてスタイルを調整 */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
     }
-    40% {
-        transform: translateY(-30px);
+    
+    h2 {
+        font-size: 1.5em;
     }
-    60% {
-        transform: translateY(-15px);
+
+    .animated-text {
+        font-size: 1.1em;
     }
 }
+
