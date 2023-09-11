@@ -37,9 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalAnimationTime = 100 * charsCongrats.length + 100 * charsSection.length;
     animatedTexts.forEach((text, index) => {
         setTimeout(() => {
-            text.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
-            text.style.opacity = '1';
-        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
+            let chars = text.innerText.split('');
+            text.innerText = '';
+            chars.forEach((char, charIndex) => {
+                setTimeout(() => {
+                    text.innerHTML += char;
+                    if (charIndex === chars.length - 1) {
+                        text.style.opacity = '1';
+                    }
+                }, 100 * charIndex); // 各文字が100ミリ秒間隔で表示される
+            });        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
     });
 
     const style = document.createElement('style');
