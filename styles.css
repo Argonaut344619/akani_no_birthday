@@ -25,6 +25,11 @@ h2 {
     font-size: 2em;  /* 以前のエラーを修正 */
     margin-top: 30px;
 }
+.animated-text {
+    text-align: center;
+    font-size: 1.5em;
+    opacity: 0;
+}
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
