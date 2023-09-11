@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             congratsText.innerHTML += char;
             if (index === charsCongrats.length - 1) {
-                congratsText.innerHTML += "💖";
+                congratsText.innerHTML += "💖💖💖";
                 congratsText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
             }
         }, 100 * index);
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 sectionText.innerHTML += char;
                 if (index === charsSection.length - 1) {
-                    sectionText.innerHTML += "🐻";
+                    sectionText.innerHTML += "🐻🐻🐻🐻";
                     sectionText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
                 }
             }, 100 * index);
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalAnimationTime = 100 * charsCongrats.length + 100 * charsSection.length;
     animatedTexts.forEach((text, index) => {
         setTimeout(() => {
-            text.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both ${index + 1} times`;
+            text.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both ${index + 1}`;
         }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
     });
 
