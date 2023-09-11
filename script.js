@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
             text.innerText = '';
             chars.forEach((char, charIndex) => {
                 setTimeout(() => {
+                    text.style.opacity = '1';
                     text.innerHTML += char;
                     if (charIndex === chars.length - 1) {
-                        text.style.opacity = '1';
                     }
                 }, 100 * charIndex); // 各文字が100ミリ秒間隔で表示される
             });        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
