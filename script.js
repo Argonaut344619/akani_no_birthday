@@ -3,50 +3,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const sectionText = document.querySelector("section h2");
     const animatedTexts = document.querySelectorAll(".animated-text");
 
-    let charsCongrats = congratsText.innerText.split('');
-    let charsSection = sectionText.innerText.split('');
-
-    congratsText.innerHTML = '';
-    sectionText.innerHTML = '';
-
-    // <h1>のテキストを1文字ずつ表示
-    charsCongrats.forEach((char, index) => {
-        setTimeout(() => {
-            congratsText.innerHTML += char;
-            if (index === charsCongrats.length - 1) {
-                congratsText.innerHTML += "💖💖💖";
-                congratsText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
+    function splitText(text) {
+        let chars = [];
+        let i = 0;
+        while (i < text.length) {
+            if (text.substr(i, 4) === "<br>") {
+                chars.push("<br>");
+                i += 4;
+            } else {
+                chars.push(text[i]);
+                i++;
             }
-        }, 100 * index);
-    });
+        }
+        return chars;
+    }
 
-    // <h1>のアニメーションが終わった後に<h2>のテキストを1文字ずつ表示
-    setTimeout(() => {
-        charsSection.forEach((char, index) => {
+    function animateText(element, chars) {
+        element.innerHTML = '';
+        chars.forEach((char, index) => {
             setTimeout(() => {
-                sectionText.innerHTML += char;
-                if (index === charsSection.length - 1) {
-                    sectionText.innerHTML += "🐻🐻🐻🐻";
-                    sectionText.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
+                if (char === "<br>") {
+                    element.innerHTML += char;
+                } else {
+                    element.innerHTML += char;
+                    if (element === congratsText && index === chars.length - 1) {
+                        element.innerHTML += "💖💖💖";
+                        element.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
+                    }
+                    if (element === sectionText && index === chars.length - 1) {
+                        element.innerHTML += "🐻🐻🐻🐻";
+                        element.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
+                    }
                 }
             }, 100 * index);
         });
+    }
+
+    let charsCongrats = splitText(congratsText.innerHTML);
+    let charsSection = splitText(sectionText.innerHTML);
+
+    animateText(congratsText, charsCongrats);
+
+    setTimeout(() => {
+        animateText(sectionText, charsSection);
     }, 100 * charsCongrats.length);
 
-    // 各<span>のテキストにシェイクアニメーションを適用
     let totalAnimationTime = 100 * charsCongrats.length + 100 * charsSection.length;
     animatedTexts.forEach((text, index) => {
         setTimeout(() => {
-            let chars = text.innerText.split('');
-            text.innerText = '';
-            chars.forEach((char, charIndex) => {
-                setTimeout(() => {
-                    text.style.opacity = '1';
-                    text.innerHTML += char;
-                    if (charIndex === chars.length - 1) {
-                    }
-                }, 100 * charIndex); // 各文字が100ミリ秒間隔で表示される
-            });        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
+            let chars = splitText(text.innerHTML);
+            animateText(text, chars);
+        }, totalAnimationTime + 500 * index); 
     });
 
     const style = document.createElement('style');
