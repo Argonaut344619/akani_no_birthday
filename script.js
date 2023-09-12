@@ -48,13 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
         animateText(sectionText, charsSection);
     }, 100 * charsCongrats.length);
 
+    // 各<span>のテキストにシェイクアニメーションを適用
     let totalAnimationTime = 100 * charsCongrats.length + 100 * charsSection.length;
     animatedTexts.forEach((text, index) => {
         setTimeout(() => {
-            let chars = splitText(text.innerHTML);
-            animateText(text, chars);
-        }, totalAnimationTime + 500 * index); 
+            let chars = text.innerText.split('');
+            text.innerText = '';
+            chars.forEach((char, charIndex) => {
+                setTimeout(() => {
+                    text.style.opacity = '1';
+                    text.innerHTML += char;
+                    if (charIndex === chars.length - 1) {
+                    }
+                }, 100 * charIndex); // 各文字が100ミリ秒間隔で表示される
+            });        }, totalAnimationTime + 500 * index); // <h1>と<h2>のアニメーション終了後に動作開始
     });
+
 
     const style = document.createElement('style');
     style.innerHTML = `
@@ -75,3 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 });
+
