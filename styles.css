@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;  /* フォントサイズを調整 */
+    font-size : 2.5em;  /* フォントサイズを調整 */
     text-align: center;
     animation: bounce 1s infinite;
     margin-bottom: 20px;  /* 余白を調整 */
@@ -27,6 +27,7 @@ h1 {
 h2 {
     font-size: 2em;
     margin-top: 20px;  /* 余白を調整 */
+    opacity: 0;
 }
 
 .animated-text {

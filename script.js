@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         element.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
                     }
                     if (element === sectionText && index === chars.length - 1) {
-                        element.innerHTML += "🐻🐻🐻🐻";
+                        element.style.opacity = '1';
+                        element.innerHTML += "🐻🐻🐻";
                         element.style.animation = `shake 0.5s cubic-bezier(.36,.07,.19,.97) both`;
                     }
                 }
